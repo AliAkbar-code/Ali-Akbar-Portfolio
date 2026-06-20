@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
+    <style>
+        /* CSS Variables - Fixed */
+        :root {
+            --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            --color-background-primary: #ffffff;
+            --color-background-secondary: #f8f9fa;
+            --color-background-tertiary: #f1f3f5;
+            --color-text-primary: #1a1a2e;
+            --color-text-secondary: #4a4a6a;
+            --color-border-secondary: #d1d5db;
+            --color-border-tertiary: #e5e7eb;
+            --border-radius-md: 8px;
+            --border-radius-lg: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--color-background-tertiary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--color-background-primary);
+            border-bottom: 0.5px solid var(--color-border-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            height: 56px;
+        }
+
+        .nav-logo {
+            font-weight: 500;
+            font-size: 16px;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--color-text-primary);
+        }
+
+        .nav-logo span {
+            color: #534AB7;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            transition: color 0.2s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-text-primary);
+        }
+
+        .nav-cta {
+            background: #534AB7;
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: 6px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            text-decoration: none;
+        }
+
+        .nav-cta:hover {
+            background: #433a9e;
+        }
+
+        section {
+            padding: 4rem 2rem;
+            max-width: 760px;
+            margin: 0 auto;
+            scroll-margin-top: 70px;
+        }
+
+        .hero {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #EEEDFE;
+            color: #534AB7;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+            font-weight: 500;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: #534AB7;
+        }
+
+        .hero p {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            line-height: 1.8;
+            max-width: 560px;
+            margin-bottom: 2rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #534AB7;
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: 10px 22px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: #433a9e;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--color-text-primary);
+            border: 0.5px solid var(--color-border-secondary);
+            border-radius: var(--border-radius-md);
+            padding: 10px 22px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            border-color: #534AB7;
+            color: #534AB7;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 12px;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            border: 0.5px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-md);
+            padding: 6px 14px;
+            transition: all 0.2s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--color-border-secondary);
+            color: var(--color-text-primary);
+        }
+
+        .section-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #534AB7;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .about-card {
+            background: var(--color-background-primary);
+            border: 0.5px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+        }
+
+        .about-card p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--color-text-secondary);
+        }
+
+        .skills-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .skills-category-label {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 8px;
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-pill {
+            background: var(--color-background-primary);
+            border: 0.5px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-md);
+            padding: 8px 14px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.2s ease;
+        }
+
+        .skill-pill:hover {
+            border-color: #534AB7;
+            background: #EEEDFE;
+            transform: translateY(-1px);
+        }
+
+        .skill-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #534AB7;
+            flex-shrink: 0;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .project-card {
+            background: var(--color-background-primary);
+            border: 0.5px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-lg);
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .project-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .project-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--border-radius-md);
+            background: #EEEDFE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #534AB7;
+            font-size: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .project-link {
+            color: var(--color-text-secondary);
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.2s ease;
+        }
+
+        .project-link:hover {
+            color: #534AB7;
+        }
+
+        .project-name {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tag {
+            font-size: 11px;
+            padding: 3px 8px;
+            background: #EEEDFE;
+            color: #3C3489;
+            border-radius: 100px;
+        }
+
+        /* GitHub Callout Box */
+        .github-callout {
+            background: var(--color-background-primary);
+            border: 1.5px solid #534AB7;
+            border-radius: var(--border-radius-lg);
+            padding: 1.25rem 1.5rem;
+            margin-top: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .github-callout:hover {
+            box-shadow: 0 4px 20px rgba(83, 74, 183, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .github-callout-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .github-callout-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #EEEDFE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #534AB7;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .github-callout-text {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+        }
+
+        .github-callout-text strong {
+            color: var(--color-text-primary);
+        }
+
+        .github-callout-text .highlight {
+            color: #534AB7;
+            font-weight: 600;
+        }
+
+        .github-callout-btn {
+            background: #534AB7;
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .github-callout-btn:hover {
+            background: #433a9e;
+            transform: scale(1.02);
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 1rem;
+            padding-bottom: 2rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timeline-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #534AB7;
+            flex-shrink: 0;
+            margin-top: 5px;
+        }
+
+        .timeline-line {
+            width: 1px;
+            background: var(--color-border-tertiary);
+            flex: 1;
+            margin-top: 4px;
+        }
+
+        .timeline-item:last-child .timeline-line {
+            display: none;
+        }
+
+        .timeline-content {
+            flex: 1;
+        }
+
+        .timeline-title {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .timeline-sub {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            margin-top: 2px;
+        }
+
+        .timeline-date {
+            font-size: 11px;
+            color: #534AB7;
+            background: #EEEDFE;
+            padding: 2px 8px;
+            border-radius: 100px;
+            display: inline-block;
+            margin-top: 6px;
+        }
+
+        .timeline-body {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+            line-height: 1.6;
+            margin-top: 8px;
+        }
+
+        .edu-card {
+            background: var(--color-background-primary);
+            border: 0.5px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-lg);
+            padding: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .edu-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--border-radius-md);
+            background: #EEEDFE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #534AB7;
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+
+        .edu-degree {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .edu-uni {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .edu-year {
+            font-size: 11px;
+            color: #534AB7;
+            margin-top: 4px;
+        }
+
+        .testimonial-card {
+            background: var(--color-background-primary);
+            border: 0.5px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-lg);
+            padding: 1.5rem;
+        }
+
+        .testimonial-quote {
+            font-size: 28px;
+            color: #534AB7;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .testimonial-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #EEEDFE;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 500;
+            color: #3C3489;
+            flex-shrink: 0;
+        }
+
+        .testimonial-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .testimonial-role {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+        }
+
+        .contact-card {
+            background: var(--color-background-primary);
+            border: 0.5px solid var(--color-border-tertiary);
+            border-radius: var(--border-radius-lg);
+            padding: 2rem;
+        }
+
+        .contact-card .contact-info {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            padding: 1rem;
+            background: var(--color-background-secondary);
+            border-radius: var(--border-radius-md);
+        }
+
+        .contact-card .contact-info-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--color-text-secondary);
+        }
+
+        .contact-card .contact-info-item i {
+            color: #534AB7;
+            font-size: 18px;
+        }
+
+        .contact-card .contact-info-item a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+        }
+
+        .contact-card .contact-info-item a:hover {
+            color: #534AB7;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            border: 0.5px solid var(--color-border-secondary);
+            border-radius: var(--border-radius-md);
+            padding: 9px 12px;
+            font-size: 14px;
+            background: var(--color-background-secondary);
+            color: var(--color-text-primary);
+            font-family: inherit;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #534AB7;
+            box-shadow: 0 0 0 3px #EEEDFE;
+        }
+
+        .submit-btn {
+            background: #534AB7;
+            color: #fff;
+            border: none;
+            border-radius: var(--border-radius-md);
+            padding: 11px 24px;
+            font-size: 14px;
+            cursor: pointer;
+            align-self: flex-start;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: background 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            background: #433a9e;
+        }
+
+        .submit-btn:active {
+            transform: scale(0.98);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 0.5px solid var(--color-border-tertiary);
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        footer span {
+            color: #534AB7;
+        }
+
+        .divider {
+            border: none;
+            border-top: 0.5px solid var(--color-border-tertiary);
+            margin: 0;
+        }
+
+        /* Toast notification for button clicks */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #534AB7;
+            color: white;
+            padding: 12px 24px;
+            border-radius: var(--border-radius-md);
+            font-size: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(83, 74, 183, 0.3);
+            max-width: 90%;
+            text-align: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .toast.error {
+            background: #dc3545;
+        }
+
+        .toast.success {
+            background: #28a745;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .contact-card {
+                padding: 1.25rem;
+            }
+
+            .contact-card .contact-info {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            .edu-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-row {
+                flex-wrap: wrap;
+            }
+
+            .github-callout {
+                flex-direction: column;
+                text-align: center;
+                padding: 1.25rem;
+            }
+
+            .github-callout-left {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .github-callout-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <nav>
+        <a href="#home" class="nav-logo">ali<span>akbar</span>.dev</a>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Hire me</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-badge"><i class="ti ti-code" aria-hidden="true"></i> Open to full-time roles</div>
+        <h1>Hi, I'm <span>Ali Akbar Subhani</span><br>MERN Stack & Python Developer</h1>
+        <p>I build modern web applications and intelligent data-driven systems. Specializing in the MERN stack, Django, FastAPI, and machine learning — I deliver scalable, real-world digital solutions through freelancing and personal projects.</p>
+        <div class="hero-actions">
+            <a class="btn-primary" href="#" id="downloadCvBtn"><i class="ti ti-download" aria-hidden="true"></i> Download CV</a>
+            <a class="btn-outline" href="#projects"><i class="ti ti-folder" aria-hidden="true"></i> View projects</a>
+        </div>
+        <div class="social-row">
+            <a class="social-link" href="https://github.com/AliAkbar-code" target="_blank"><i class="ti ti-brand-github" aria-hidden="true"></i> GitHub</a>
+            <a class="social-link" href="https://www.linkedin.com/in/ali-akbar-subhani-49008a3b4" target="_blank"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> LinkedIn</a>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="about">
+        <p class="section-label">About me</p>
+        <h2 class="section-title">Who I am</h2>
+        <p class="section-sub">Background, focus, and what drives me</p>
+        <div class="about-card">
+            <p>I'm Ali Akbar Subhani, a MERN Stack Developer and Python enthusiast from Lahore, Pakistan. I specialize in building modern web applications and intelligent data-driven systems — from responsive frontends to robust APIs and ML-powered backends. With hands-on experience in Django, Flask, FastAPI, TensorFlow, and Scikit-learn, I focus on delivering scalable, real-world solutions through freelance client work and personal projects. I graduated from the University of the Punjab in December 2024 and completed a 6-month intensive trainee program at ExD - Excellence Delivered (ExD Pvt Ltd) covering full-stack Python development and machine learning.</p>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="skills">
+        <p class="section-label">Skills</p>
+        <h2 class="section-title">What I work with</h2>
+        <p class="section-sub">Technologies across the full stack</p>
+        <div class="skills-section">
+            <div>
+                <div class="skills-category-label">Frontend</div>
+                <div class="skills-grid">
+                    <div class="skill-pill"><span class="skill-dot"></span>React.js</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>HTML / CSS / JS</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Bootstrap</div>
+                </div>
+            </div>
+            <div>
+                <div class="skills-category-label">Backend</div>
+                <div class="skills-grid">
+                    <div class="skill-pill"><span class="skill-dot"></span>Node.js</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Express.js</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Django</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Flask</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>FastAPI</div>
+                </div>
+            </div>
+            <div>
+                <div class="skills-category-label">Data Science & ML</div>
+                <div class="skills-grid">
+                    <div class="skill-pill"><span class="skill-dot"></span>Python</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Pandas</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>NumPy</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>TensorFlow</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Scikit-learn</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Data Analysis</div>
+                </div>
+            </div>
+            <div>
+                <div class="skills-category-label">Tools & Infra</div>
+                <div class="skills-grid">
+                    <div class="skill-pill"><span class="skill-dot"></span>MongoDB</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>Git & GitHub</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>VPS Deployment</div>
+                    <div class="skill-pill"><span class="skill-dot"></span>REST APIs</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="projects">
+        <p class="section-label">Projects</p>
+        <h2 class="section-title">Things I've built</h2>
+        <p class="section-sub">Selected work from freelancing and personal projects</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-top">
+                    <div class="project-icon"><i class="ti ti-world" aria-hidden="true"></i></div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://github.com/AliAkbar-code/Products-Showcase-MERN-Website" target="_blank" title="GitHub"><i class="ti ti-brand-github"></i></a>
+                        <a class="project-link" href="https://swiftsolutionx.com/" target="_blank" title="Live Demo"><i class="ti ti-external-link"></i></a>
+                    </div>
+                </div>
+                <div class="project-name">Swiftsolutionx Website</div>
+                <div class="project-desc">A fully responsive business website built for a real client, featuring a modern UI and smooth performance. Deployed on a VPS and optimized for production use.</div>
+                <div class="project-tags">
+                    <span class="tag">MongoDB</span>
+                    <span class="tag">Express.js</span>
+                    <span class="tag">React.js</span>
+                    <span class="tag">Node.js</span>
+                    <span class="tag">Bootstrap</span>
+                    <span class="tag">VPS</span>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-top">
+                    <div class="project-icon"><i class="ti ti-chart-bar" aria-hidden="true"></i></div>
+                    <div class="project-links">
+                        <a class="project-link" href="https://github.com/AliAkbar-code/E-commrece-Customer-Behavior-Analysis-System" target="_blank" title="GitHub"><i class="ti ti-brand-github"></i></a>
+                        <a class="project-link" href="#" title="Live Demo"><i class="ti ti-external-link"></i></a>
+                    </div>
+                </div>
+                <div class="project-name">E-Commerce Behavior Analysis</div>
+                <div class="project-desc">A data-driven system that analyzes customer behavior in e-commerce platforms to improve sales strategy, user targeting, and business decision-making.</div>
+                <div class="project-tags">
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">NumPy</span>
+                    <span class="tag">Django</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">TensorFlow</span>
+                    <span class="tag">Scikit-learn</span>
+                    <span class="tag">ML</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- GitHub Callout Box -->
+        <div class="github-callout">
+            <div class="github-callout-left">
+                <div class="github-callout-icon">
+                    <i class="ti ti-brand-github" aria-hidden="true"></i>
+                </div>
+                <div class="github-callout-text">
+                    <strong>🔍 Want to see more?</strong><br>
+                    The remaining projects and ongoing work are available on my <span class="highlight">GitHub</span>. Check out my repositories for more exciting stuff!
+                </div>
+            </div>
+            <a href="https://github.com/AliAkbar-code" target="_blank" class="github-callout-btn">
+                <i class="ti ti-brand-github" aria-hidden="true"></i>
+                Visit GitHub
+                <i class="ti ti-arrow-right" aria-hidden="true"></i>
+            </a>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="experience">
+        <p class="section-label">Experience</p>
+        <h2 class="section-title">Work history</h2>
+        <p class="section-sub">Training programs and freelance work</p>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Python & Backend Trainee</div>
+                    <div class="timeline-sub">ExD - Excellence Delivered (ExD Pvt Ltd) · On-site Training Program</div>
+                    <div class="timeline-date">6-month program</div>
+                    <div class="timeline-body">Completed an intensive 6-month trainee program at ExD - Excellence Delivered covering Python backend development with Flask, Django, and FastAPI, alongside core machine learning concepts, Pandas, NumPy, and hands-on project work.</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-title">Freelance Web Developer</div>
+                    <div class="timeline-sub">Self-employed · Remote</div>
+                    <div class="timeline-date">Ongoing</div>
+                    <div class="timeline-body">Delivered client-based web projects including the <a href="https://swiftsolutionx.com/" target="_blank" style="color: #534AB7; text-decoration: none; font-weight: 500;">Swiftsolutionx</a> business website — a fully responsive, production-deployed MERN stack application built in collaboration with another developer.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="education">
+        <p class="section-label">Education</p>
+        <h2 class="section-title">Academic background</h2>
+        <p class="section-sub">Where I studied</p>
+        <div class="edu-card">
+            <div class="edu-icon"><i class="ti ti-school" aria-hidden="true"></i></div>
+            <div>
+                <div class="edu-degree">Bachelor of Science in Computer Science</div>
+                <div class="edu-uni">University of the Punjab, Lahore</div>
+                <div class="edu-year">Graduated December 2024</div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="testimonials">
+        <p class="section-label">Testimonials</p>
+        <h2 class="section-title">What people say</h2>
+        <p class="section-sub">Kind words from those I've worked with</p>
+        <div class="testimonial-card">
+            <div class="testimonial-quote">"</div>
+            <div class="testimonial-text">Ali is a dedicated developer who brings real problem-solving ability and technical depth to every project. Working together on Swiftsolutionx, he demonstrated strong skills in the MERN stack, attention to detail, and consistent follow-through on delivery.</div>
+            <div class="testimonial-author">
+                <div class="testimonial-avatar">UM</div>
+                <div>
+                    <div class="testimonial-name">Umair</div>
+                    <div class="testimonial-role">Client & Co-developer · <a href="https://swiftsolutionx.com/" target="_blank" style="color: #534AB7; text-decoration: none;">Swiftsolutionx</a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="divider">
+
+    <section id="contact">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title">Get in touch</h2>
+        <p class="section-sub">Open to full-time opportunities — let's talk</p>
+        <div class="contact-card">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="contact-info-item">
+                    <i class="ti ti-mail"></i>
+                    <a href="mailto:aliakbarsubhani@gmail.com">alixakbrr231@gmail.com</a>
+                </div>
+                <div class="contact-info-item">
+                    <i class="ti ti-phone"></i>
+                    <a href="tel:+923214567890">+92 317 4474974</a>
+                </div>
+                <div class="contact-info-item">
+                    <i class="ti ti-map-pin"></i>
+                    <span>Lahore, Pakistan</span>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nameInput">Name</label>
+                        <input type="text" placeholder="Your name" id="nameInput" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+                        <input type="email" placeholder="your@email.com" id="emailInput" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="subjectInput">Subject</label>
+                    <input type="text" placeholder="What's this about?" id="subjectInput" required>
+                </div>
+                <div class="form-group">
+                    <label for="messageInput">Message</label>
+                    <textarea placeholder="Tell me about the role or project..." id="messageInput" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="sendMessageBtn">
+                    <i class="ti ti-send" aria-hidden="true"></i> Send message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        Designed & built by <span>Ali Akbar Subhani</span> · 2026 · All rights reserved
+    </footer>
+
+    <script>
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast';
+            if (type === 'error') {
+                toast.classList.add('error');
+            } else if (type === 'success') {
+                toast.classList.add('success');
+            }
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 4000);
+        }
+
+        // Smooth scroll for all navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') {
+                    e.preventDefault();
+                    return;
+                }
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Download CV button
+        document.getElementById('downloadCvBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            showToast('📄 Preparing your CV...', 'success');
+            // In production, replace with actual CV link
+            setTimeout(() => {
+                // Create a dummy download
+                const link = document.createElement('a');
+                link.href = '#'; // Replace with actual CV URL
+                link.download = 'ALI_AKBAR-resume.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showToast('✅ CV downloaded successfully!', 'success');
+            }, 1000);
+        });
+
+        // Navbar "Hire me" button
+        document.querySelector('.nav-cta').addEventListener('click', function(e) {
+            e.preventDefault();
+            const contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // View projects button
+        document.querySelector('.btn-outline[href="#projects"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            const projectsSection = document.getElementById('projects');
+            if (projectsSection) {
+                projectsSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+
+        // Contact Form - Send message via EmailJS
+        const contactForm = document.getElementById('contactForm');
+        const sendBtn = document.getElementById('sendMessageBtn');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('nameInput').value.trim();
+            const email = document.getElementById('emailInput').value.trim();
+            const subject = document.getElementById('subjectInput').value.trim();
+            const message = document.getElementById('messageInput').value.trim();
+
+            // Validation
+            if (!name || !email || !subject || !message) {
+                showToast('⚠️ Please fill in all fields', 'error');
+                return;
+            }
+
+            if (!email.includes('@') || !email.includes('.')) {
+                showToast('⚠️ Please enter a valid email address', 'error');
+                return;
+            }
+
+            // Disable button and show loading
+            sendBtn.disabled = true;
+            sendBtn.innerHTML = '<i class="ti ti-loader" aria-hidden="true"></i> Sending...';
+
+            // Option 1: Send via mailto (opens email client)
+            // This is the simplest option - opens user's default email client
+            const mailtoLink = `mailto:aliakbarsubhani@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+                `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+            )}`;
+            
+            // Open mailto link
+            window.location.href = mailtoLink;
+
+            // Show success message
+            setTimeout(() => {
+                showToast('✅ Email client opened! Please send the email.', 'success');
+                // Reset form
+                document.getElementById('nameInput').value = '';
+                document.getElementById('emailInput').value = '';
+                document.getElementById('subjectInput').value = '';
+                document.getElementById('messageInput').value = '';
+                // Reset button
+                sendBtn.disabled = false;
+                sendBtn.innerHTML = '<i class="ti ti-send" aria-hidden="true"></i> Send message';
+            }, 500);
+
+            /* 
+            // Option 2: Using EmailJS (uncomment and configure if you want)
+            // Sign up at https://www.emailjs.com/ and replace with your credentials
+            // Then uncomment this code and comment out the mailto option above
+            
+            const templateParams = {
+                from_name: name,
+                from_email: email,
+                subject: subject,
+                message: message,
+                to_email: 'aliakbarsubhani@gmail.com'
+            };
+
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
+                .then(function(response) {
+                    showToast('✅ Message sent successfully! I\'ll get back to you soon.', 'success');
+                    contactForm.reset();
+                    sendBtn.disabled = false;
+                    sendBtn.innerHTML = '<i class="ti ti-send" aria-hidden="true"></i> Send message';
+                }, function(error) {
+                    showToast('❌ Failed to send message. Please try again or email me directly.', 'error');
+                    sendBtn.disabled = false;
+                    sendBtn.innerHTML = '<i class="ti ti-send" aria-hidden="true"></i> Send message';
+                    console.error('EmailJS Error:', error);
+                });
+            */
+        });
+
+        // console.log('🚀 Portfolio site loaded successfully!');
+        // console.log('🔗 Check out the live project: https://swiftsolutionx.com/');
+        // console.log('📧 Contact form sends emails to: aliakbarsubhani@gmail.com');
+        // console.log('🐙 Check out more projects on GitHub: https://github.com/AliAkbar-code');
+    </script>
+</body>
+</html>
