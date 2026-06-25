@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css">
     <style>
-        /* CSS Variables - Fixed */
+        /* CSS Variables */
         :root {
             --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             --color-background-primary: #ffffff;
@@ -743,7 +743,7 @@
             margin: 0;
         }
 
-        /* Toast notification for button clicks */
+        /* Toast notification */
         .toast {
             position: fixed;
             bottom: 20px;
@@ -775,7 +775,6 @@
             background: #28a745;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
             nav {
                 padding: 0 1rem;
@@ -860,7 +859,6 @@
 </head>
 <body>
 
-    <!-- Toast Notification -->
     <div class="toast" id="toast"></div>
 
     <nav>
@@ -996,7 +994,6 @@
             </div>
         </div>
 
-        <!-- GitHub Callout Box -->
         <div class="github-callout">
             <div class="github-callout-left">
                 <div class="github-callout-icon">
@@ -1017,11 +1014,26 @@
 
     <hr class="divider">
 
+    <!-- Experience Section – Updated with new training -->
     <section id="experience">
         <p class="section-label">Experience</p>
         <h2 class="section-title">Work history</h2>
         <p class="section-sub">Training programs and freelance work</p>
         <div class="timeline">
+            <!-- NEW: IMB Data Analyst Course Training (ongoing) -->
+            <div class="timeline-item">
+                <div class="timeline-left">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-line"></div>
+                </div>
+                <div class="timeline-content">
+                    <div class="timeline-title">IMB Data Analyst Course Training</div>
+                    <div class="timeline-sub">ExD - Excellence Delivered (ExD Pvt Ltd) · Ongoing</div>
+                    <div class="timeline-date">Current</div>
+                    <div class="timeline-body">Currently enrolled in the IMB Data Analyst course at ExD, building advanced skills in data analytics, visualization, and business intelligence using industry-standard tools and real-world datasets.</div>
+                </div>
+            </div>
+            <!-- Existing: Python & Backend Trainee -->
             <div class="timeline-item">
                 <div class="timeline-left">
                     <div class="timeline-dot"></div>
@@ -1034,6 +1046,7 @@
                     <div class="timeline-body">Completed an intensive 6-month trainee program at ExD - Excellence Delivered covering Python backend development with Flask, Django, and FastAPI, alongside core machine learning concepts, Pandas, NumPy, and hands-on project work.</div>
                 </div>
             </div>
+            <!-- Existing: Freelance Web Developer -->
             <div class="timeline-item">
                 <div class="timeline-left">
                     <div class="timeline-dot"></div>
@@ -1091,7 +1104,6 @@
         <h2 class="section-title">Get in touch</h2>
         <p class="section-sub">Open to full-time opportunities — let's talk</p>
         <div class="contact-card">
-            <!-- Contact Information -->
             <div class="contact-info">
                 <div class="contact-info-item">
                     <i class="ti ti-mail"></i>
@@ -1138,50 +1150,34 @@
     </footer>
 
     <script>
-        // Toast notification function
         function showToast(message, type = 'success') {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.className = 'toast';
-            if (type === 'error') {
-                toast.classList.add('error');
-            } else if (type === 'success') {
-                toast.classList.add('success');
-            }
+            if (type === 'error') toast.classList.add('error');
+            else if (type === 'success') toast.classList.add('success');
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4000);
+            setTimeout(() => toast.classList.remove('show'), 4000);
         }
 
-        // Smooth scroll for all navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 const href = this.getAttribute('href');
-                if (href === '#') {
-                    e.preventDefault();
-                    return;
-                }
+                if (href === '#') { e.preventDefault(); return; }
                 const target = document.querySelector(href);
                 if (target) {
                     e.preventDefault();
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
         });
 
-        // Download CV button
         document.getElementById('downloadCvBtn').addEventListener('click', function(e) {
             e.preventDefault();
             showToast('📄 Preparing your CV...', 'success');
-            // In production, replace with actual CV link
             setTimeout(() => {
-                // Create a dummy download
                 const link = document.createElement('a');
-                link.href = '#'; // Replace with actual CV URL
+                link.href = '#';
                 link.download = 'ALI_AKBAR-resume.pdf';
                 document.body.appendChild(link);
                 link.click();
@@ -1190,111 +1186,53 @@
             }, 1000);
         });
 
-        // Navbar "Hire me" button
         document.querySelector('.nav-cta').addEventListener('click', function(e) {
             e.preventDefault();
-            const contactSection = document.getElementById('contact');
-            if (contactSection) {
-                contactSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+            document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
-        // View projects button
         document.querySelector('.btn-outline[href="#projects"]').addEventListener('click', function(e) {
             e.preventDefault();
-            const projectsSection = document.getElementById('projects');
-            if (projectsSection) {
-                projectsSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
 
-        // Contact Form - Send message via EmailJS
         const contactForm = document.getElementById('contactForm');
         const sendBtn = document.getElementById('sendMessageBtn');
 
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-
             const name = document.getElementById('nameInput').value.trim();
             const email = document.getElementById('emailInput').value.trim();
             const subject = document.getElementById('subjectInput').value.trim();
             const message = document.getElementById('messageInput').value.trim();
 
-            // Validation
             if (!name || !email || !subject || !message) {
                 showToast('⚠️ Please fill in all fields', 'error');
                 return;
             }
-
             if (!email.includes('@') || !email.includes('.')) {
                 showToast('⚠️ Please enter a valid email address', 'error');
                 return;
             }
 
-            // Disable button and show loading
             sendBtn.disabled = true;
             sendBtn.innerHTML = '<i class="ti ti-loader" aria-hidden="true"></i> Sending...';
 
-            // Option 1: Send via mailto (opens email client)
-            // This is the simplest option - opens user's default email client
             const mailtoLink = `mailto:aliakbarsubhani@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
                 `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
             )}`;
-            
-            // Open mailto link
             window.location.href = mailtoLink;
 
-            // Show success message
             setTimeout(() => {
                 showToast('✅ Email client opened! Please send the email.', 'success');
-                // Reset form
                 document.getElementById('nameInput').value = '';
                 document.getElementById('emailInput').value = '';
                 document.getElementById('subjectInput').value = '';
                 document.getElementById('messageInput').value = '';
-                // Reset button
                 sendBtn.disabled = false;
                 sendBtn.innerHTML = '<i class="ti ti-send" aria-hidden="true"></i> Send message';
             }, 500);
-
-            /* 
-            // Option 2: Using EmailJS (uncomment and configure if you want)
-            // Sign up at https://www.emailjs.com/ and replace with your credentials
-            // Then uncomment this code and comment out the mailto option above
-            
-            const templateParams = {
-                from_name: name,
-                from_email: email,
-                subject: subject,
-                message: message,
-                to_email: 'aliakbarsubhani@gmail.com'
-            };
-
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
-                .then(function(response) {
-                    showToast('✅ Message sent successfully! I\'ll get back to you soon.', 'success');
-                    contactForm.reset();
-                    sendBtn.disabled = false;
-                    sendBtn.innerHTML = '<i class="ti ti-send" aria-hidden="true"></i> Send message';
-                }, function(error) {
-                    showToast('❌ Failed to send message. Please try again or email me directly.', 'error');
-                    sendBtn.disabled = false;
-                    sendBtn.innerHTML = '<i class="ti ti-send" aria-hidden="true"></i> Send message';
-                    console.error('EmailJS Error:', error);
-                });
-            */
         });
-
-        // console.log('🚀 Portfolio site loaded successfully!');
-        // console.log('🔗 Check out the live project: https://swiftsolutionx.com/');
-        // console.log('📧 Contact form sends emails to: aliakbarsubhani@gmail.com');
-        // console.log('🐙 Check out more projects on GitHub: https://github.com/AliAkbar-code');
     </script>
 </body>
 </html>
